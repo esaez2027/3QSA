@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/ccbd4d6bc1.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <title>SPACE SNAKE</title>
+</head>
+
+<body>
+  <audio id="bgMusic" loop>
+    <source src="Audio/bgmusic.mp3" type="audio/mpeg">
+  </audio>
+  <button id="startButton">PRESS LEFT CLICK TO START</button>
+  <div class="screen">
+    <div class="menu">
+      <h1>SPACE SNAKE</h1>
+      <hr>
+      <ul>
+        <li><a href="select.html">START</a></li>
+        <li><a href="Tutorial.html">TUTORIAL</a></li>
+        <li><a href="devpage.html">DEVELOPERS</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("startButton").addEventListener("click", function() {
+    document.querySelector(".screen").style.display = "flex";
+    this.style.display = "none";
+    var music = document.getElementById("bgMusic");
+    music.play();
+  });
+
+  for (let i = 0; i < 500; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = `${Math.random() * 100}vh`;
+    document.body.appendChild(star);
+  }
+  </script>
+</body>
+</html>

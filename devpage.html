@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="devpage.css">
+</head>
+<body>
+      <a href="index.html"><img src="Photos/back.png" alt="BACK" style="width: 60px; height: 60px; padding: 10px;"></a>
+      <div class="container">
+      <h1 style="margin-top: 100px;">
+        ABOUT
+      </h1>
+      <p>
+        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You are Darthax, a cosmic snake, consumer of planets. The abundance of Planets in your galaxy <br>poses a serious threat to the universe.  Planets would collide, releasing great amounts of energy,<br> leading to catastrophic destruction. You were sent to this galaxy to consume its planets while weaving<br> through asteroid fields in order to maintain equilibrium in our universe.  
+      </p>
+      <h1>TIPS AND TRICKS:</h1>
+      <p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plan your moves ahead to avoid getting trapped.
+        Use obstacles to your advantage by maneuvering the snake around them strategically.
+        Be cautious when the snake becomes longer, as it becomes easier to collide with obstacles or itself.</p>
+        <h1>REFERENCES</h1>
+        <p>GfG. (2023, December 26). Create a snake game using HTML, CSS and JavaScript. GeeksforGeeks. <br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://www.geeksforgeeks.org/create-a-snake-game-using-html-css-and-javascript/?fbclid=IwAR2ntIf-<br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JeO7_esQ2i5zsQn4lPX--KaiwA6W-Rd61lC3WAvDyi14st3WwjE</p>
+      <hr>
+      <h1>GAME DEVELOPERS</h1>
+      <div class="cont">
+      <div class="food">
+        <img src="Photos/me.png" alt="Krabby Patty" style="width: 300px; height: 300px; border-radius: 50%;">
+          <h2>Ellizson <br> Programmer</h2>
+      </div>
+      <div class="food">
+        <img src="Photos/noah.png" alt="Krabby Patty" style="width: 300px; height: 300px; border-radius: 50%;">
+         <h2>Noah <br> Game Designer</h2>
+      </div>
+      <div class="food">
+        <img src="Photos/sab.png" alt="Krabby Patty" style="width: 300px; height: 300px; border-radius: 50%;">
+          <h2>Sab<br>Artist</h2>
+      </div>
+      </div>
+      </div>
+      <script>
+        for (let i = 0; i < 900; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 160}vh`;
+        document.body.appendChild(star);
+}
+      </script>
+</body>
+</html>

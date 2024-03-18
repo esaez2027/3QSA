@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="select.css">
+</head>
+<body>
+  <h1>SELECT YOUR SNAKE</h1>
+  <a href="poopp.html"><div id="snake1" style="text-align: center; margin: 20px;">
+    <img src="Photos/poopsnake.png" alt="Poop Snake" style="width: 200px; height: 200px;">
+    <h2>VERY EASY</h2>
+  </div></a>
+
+  <a href="green.html"><div id="snake2" style="text-align: center; margin: 20px;">
+    <img src="Photos/greensnake.png" alt="Green Snake" style="width: 200px; height: 200px;">
+    <h2>EASY</h2>
+  </div></a>
+
+  <a href="snek.html"><div id="snake3" style="text-align: center; margin: 20px;">
+    <img src="Photos/spacesnake.png" alt="Space Snake" style="width: 200px; height: 200px;">
+    <h2>NORMAL</h2>
+  </div></a>
+
+  <a href="gold.html"><div id="snake4" style="text-align: center; margin: 20px;">
+    <img src="Photos/goldensnake.png" alt="Gold Snake" style="width: 200px; height: 200px;">
+    <h2>HARD</h2>
+  </div></a>
+
+  <a href="clown.html"><div id="snake5" style="text-align: center; margin: 20px;">
+    <img src="Photos/clownsnake.png" alt="Clown Snake" style="width: 200px; height: 200px;">
+    <h2>EXTREME</h2>
+  </div></a>
+      <script>
+            for (let i = 0; i < 500; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+        document.body.appendChild(star);
+      }
+      </script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="green.css">
+</head>
+<body>
+  
+  <audio id="bgMusic" loop>
+    <source src="Audio/bgmusic.mp3" type="audio/mpeg">
+  </audio>
+    <button onclick="whenEverythingAndAnythingLoadsBeforeTheEndOfTheUniverse(); playmusic()"
+    >START</button>
+  <div id="game-container">
+    <div id="game-board"></div>
+    <div id="score">Score: 0</div>
+  </div>
+  <script>
+    function whenEverythingAndAnythingLoadsBeforeTheEndOfTheUniverse(){
+    var music = document.getElementById("bgMusic");
+    music.play();
+    const board = document.getElementById('game-board');
+    const scoreDisplay = document.getElementById('score');
+    let snake = [{ x: 10, y: 10 }];
+    let direction = 'right';
+    let food = generateFood();
+    let rock1 = generateRock()
+    let rock2 = generateRock()
+    let rock3 = generateRock()
+    let rock4 = generateRock()
+    let rock5 = generateRock()
+    let rock6 = generateRock()
+    let rock7 = generateRock()
+    let rock8 = generateRock()
+    let rock9 = generateRock()
+    let rock10 = generateRock()
+    let rock11 = generateRock()
+    let rock12 = generateRock()
+    let rock13 = generateRock()
+    let rock14 = generateRock()
+    let rock15 = generateRock()
+
+    let score = 0;
+
+    document.querySelector('button').style.display = 'none';
+
+    // generate random stars
+    for (let i = 0; i < 500; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.left = `${Math.random() * 100}vw`;
+      star.style.top = `${Math.random() * 100}vh`;
+      document.body.appendChild(star);
+    }
+
+    function draw() {
+      board.innerHTML = '';
+
+      snake.forEach(segment => {
+        const snakeElement = document.createElement('div');
+        snakeElement.classList.add('snake');
+        snakeElement.style.gridRowStart = segment.y;
+        snakeElement.style.gridColumnStart = segment.x;
+        board.appendChild(snakeElement);
+      });
+
+      const foodElement = document.createElement('div');
+      foodElement.classList.add('food');
+      foodElement.style.gridRowStart = food.y;
+      foodElement.style.gridColumnStart = food.x;
+      board.appendChild(foodElement);
+
+      const rockElement1 = document.createElement('div');
+      rockElement1.classList.add('rock');
+      rockElement1.style.gridRowStart = rock1.y1;
+      rockElement1.style.gridColumnStart = rock1.x1;
+      board.appendChild(rockElement1);
+
+      const rockElement2 = document.createElement('div');
+      rockElement2.classList.add('rock');
+      rockElement2.style.gridRowStart = rock2.y2;
+      rockElement2.style.gridColumnStart = rock2.x2;
+      board.appendChild(rockElement2);
+
+      const rockElement3 = document.createElement('div');
+      rockElement3.classList.add('rock');
+      rockElement3.style.gridRowStart = rock3.y3;
+      rockElement3.style.gridColumnStart = rock3.x3;
+      board.appendChild(rockElement3);
+
+      const rockElement4 = document.createElement('div');
+      rockElement4.classList.add('rock');
+      rockElement4.style.gridRowStart = rock4.y4;
+      rockElement4.style.gridColumnStart = rock4.x4;
+      board.appendChild(rockElement4);
+
+      const rockElement5 = document.createElement('div');
+      rockElement5.classList.add('rock');
+      rockElement5.style.gridRowStart = rock5.y5;
+      rockElement5.style.gridColumnStart = rock5.x5;
+      board.appendChild(rockElement5);
+
+      const rockElement6 = document.createElement('div');
+      rockElement6.classList.add('rock');
+      rockElement6.style.gridRowStart = rock6.y6;
+      rockElement6.style.gridColumnStart = rock6.x6;
+      board.appendChild(rockElement6);
+
+      const rockElement7 = document.createElement('div');
+      rockElement7.classList.add('rock');
+      rockElement7.style.gridRowStart = rock7.y7;
+      rockElement7.style.gridColumnStart = rock7.x7;
+      board.appendChild(rockElement7);
+
+      const rockElement8 = document.createElement('div');
+      rockElement8.classList.add('rock');
+      rockElement8.style.gridRowStart = rock8.y8;
+      rockElement8.style.gridColumnStart = rock8.x8;
+      board.appendChild(rockElement8);
+
+      const rockElement9= document.createElement('div');
+      rockElement9.classList.add('rock');
+      rockElement9.style.gridRowStart = rock9.y9;
+      rockElement9.style.gridColumnStart = rock9.x9;
+      board.appendChild(rockElement9);
+
+      const rockElement10 = document.createElement('div');
+      rockElement10.classList.add('rock');
+      rockElement10.style.gridRowStart = rock10.y10;
+      rockElement10.style.gridColumnStart = rock10.x10;
+      board.appendChild(rockElement10);
+
+      const rockElement11 = document.createElement('div');
+      rockElement11.classList.add('rock');
+      rockElement11.style.gridRowStart = rock11.y11;
+      rockElement11.style.gridColumnStart = rock11.x11;
+      board.appendChild(rockElement11);
+
+      const rockElement12 = document.createElement('div');
+      rockElement12.classList.add('rock');
+      rockElement12.style.gridRowStart = rock12.y12;
+      rockElement12.style.gridColumnStart = rock12.x12;
+      board.appendChild(rockElement12);
+
+      const rockElement13 = document.createElement('div');
+      rockElement13.classList.add('rock');
+      rockElement13.style.gridRowStart = rock13.y13;
+      rockElement13.style.gridColumnStart = rock13.x13;
+      board.appendChild(rockElement13);
+
+      const rockElement14 = document.createElement('div');
+      rockElement14.classList.add('rock');
+      rockElement14.style.gridRowStart = rock14.y14;
+      rockElement14.style.gridColumnStart = rock14.x14;
+      board.appendChild(rockElement14);
+
+      const rockElement15 = document.createElement('div');
+      rockElement15.classList.add('rock');
+      rockElement15.style.gridRowStart = rock15.y15;
+      rockElement15.style.gridColumnStart = rock15.x15;
+      board.appendChild(rockElement15);
+
+      scoreDisplay.textContent = `Score: ${score}`;
+    }
+    const eatSound = new Audio('Audio/SnakeEat.mp3');
+    const dedSound = new Audio('Audio/SnakeDeath.mp3');
+
+  function move() {
+  const head = Object.assign({}, snake[0]);
+  switch (direction) {
+      case 'up':
+          head.y--;
+          break;
+      case 'down':
+          head.y++;
+          break;
+      case 'left':
+          head.x--;
+          break;
+      case 'right':
+          head.x++;
+          break;
+  }
+
+  if (head.x < 1 || head.x > 20 || head.y < 1 || head.y > 20) {
+      dedSound.play();
+      gameOver();
+      window.location.href="gameover.html";
+      return;
+  }
+
+  if (snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y)) {
+      dedSound.play();
+      gameOver();
+      window.location.href="gameover.html";
+      return;
+  }
+  if (snake.slice(1).some(segment => segment.x === food.x && segment.y === food.y)) {
+      food=generateFood();
+      return;
+  }
+    function isGameOver() {
+    if (
+    snake[0].x < 0 ||
+    snake[0].x >= canvas.width ||
+    snake[0].y < 0 ||
+    snake[0].y >= canvas.height ||
+    snake.slice(1).some(segment => segment.x === snake[0].x && segment.y === snake[0].y)
+    ) {
+    return true;
+    }
+    return false;
+      }
+    if (head.x === rock1.x1 && head.y === rock1.y1 || head.x === rock2.x2 && head.y === rock2.y2 || head.x === rock3.x3 && head.y === rock3.y3 || head.x === rock4.x4 && head.y === rock4.y4 || head.x === rock5.x5 && head.y === rock5.y5 || head.x === rock6.x6 && head.y === rock6.y6 || head.x === rock7.x7 && head.y === rock7.y7 || head.x === rock8.x8 && head.y === rock8.y8 || head.x === rock9.x9 && head.y === rock9.y9 || head.x === rock10.x10 && head.y === rock10.y10 || head.x === rock11.x11 && head.y === rock11.y11 || head.x === rock12.x12 && head.y === rock12.y12 || head.x === rock13.x13 && head.y === rock13.y13 || head.x === rock14.x14 && head.y === rock14.y14 || head.x === rock15.x15 && head.y === rock15.y15) {
+      dedSound.play()
+      gameOver();
+      window.location.href="gameover.html";
+      return;
+    } 
+
+    if (food.x === rock1.x1 && food.y === rock1.y1 || food.x === rock2.x2 && food.y === rock2.y2 || food.x === rock3.x3 && food.y === rock3.y3 || food.x === rock4.x4 && food.y === rock4.y4 || food.x === rock5.x5 && food.y === rock5.y5 || food.x === rock6.x6 && food.y === rock6.y6 || food.x === rock7.x7 && food.y === rock7.y7 || food.x === rock8.x8 && food.y === rock8.y8 || food.x === rock9.x9 && food.y === rock9.y9 || food.x === rock10.x10 && food.y === rock10.y10 || food.x === rock11.x11 && food.y === rock11.y11 || food.x === rock12.x12 && food.y === rock12.y12 || food.x === rock13.x13 && food.y === rock13.y13 || food.x === rock14.x14 && food.y === rock14.y14 || food.x === rock15.x15 && food.y === rock15.y15) {
+      food=generateFood();
+      return;
+    } 
+
+    if (head.x === rock1.x1 && head.y === rock1.y1 || head.x === rock2.x2 && head.y === rock2.y2 || head.x === rock3.x3 && head.y === rock3.y3 || head.x === rock4.x4 && head.y === rock4.y4 || head.x === rock5.x5 && head.y === rock5.y5 || head.x === rock6.x6 && head.y === rock6.y6 || head.x === rock7.x7 && food.y === head.y7 || head.x === rock8.x8 && head.y === rock8.y8 || head.x === rock9.x9 && head.y === rock9.y9 || head.x === rock10.x10 && head.y === rock10.y10 || head.x === rock11.x11 && head.y === rock11.y11 || head.x === rock12.x12 && head.y === rock12.y12 || head.x === rock13.x13 && head.y === rock13.y13 || head.x === rock14.x14 && head.y === rock14.y14 || head.x === rock15.x15 && head.y === rock15.y15) {
+      food=generateFood();
+      return;
+    } 
+
+    snake.unshift(head);
+
+    if (head.x === food.x && head.y === food.y) {
+      food = generateFood();
+      score++;
+      localStorage.setItem('score', score);
+      eatSound.play();
+    } else {
+      snake.pop();
+    }
+  }
+  if (score === 0) {
+  localStorage.setItem('score', score);
+  } else {
+  localStorage.setItem('score', score.toString());
+  }
+
+    function generateFood() {
+      var x = Math.floor(Math.random() * 20) + 1;
+      var y = Math.floor(Math.random() * 20) + 1;
+      return { x, y };
+    }
+    function generateRock() {
+      const minX = 2; 
+      const maxX = 19;
+      const minY = 2;
+      const maxY = 9; 
+
+      const minnX = 2; 
+      const maxxX = 19;
+      const minnY = 11;
+      const maxxY = 19; 
+
+      const x1 = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+      const y1 = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+      const x2 = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+      const y2 = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+      const x3 = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+      const y3 = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+      const x4 = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+      const y4 = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+      const x5 = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+      const y5 = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+      const x6 = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+      const y6 = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+      const x7 = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+      const y7 = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+      const x8 = Math.floor(Math.random() * (maxxX - minnX + 1)) + minnX;
+      const y8 = Math.floor(Math.random() * (maxxY - minnY + 1)) + minnY;
+
+      const x9 = Math.floor(Math.random() * (maxxX - minnX + 1)) + minnX;
+      const y9 = Math.floor(Math.random() * (maxxY - minnY + 1)) + minnY;
+
+      const x10 = Math.floor(Math.random() * (maxxX - minnX + 1)) + minnX;
+      const y10 = Math.floor(Math.random() * (maxxY - minnY + 1)) + minnY;
+
+      const x11 = Math.floor(Math.random() * (maxxX - minnX + 1)) + minnX;
+      const y11 = Math.floor(Math.random() * (maxxY - minnY + 1)) + minnY;
+
+      const x12 = Math.floor(Math.random() * (maxxX - minnX + 1)) + minnX;
+      const y12 = Math.floor(Math.random() * (maxxY - minnY + 1)) + minnY;
+
+      const x13 = Math.floor(Math.random() * (maxxX - minnX + 1)) + minnX;
+      const y13 = Math.floor(Math.random() * (maxxY - minnY + 1)) + minnY;
+      
+      const x14 = Math.floor(Math.random() * (maxxX - minnX + 1)) + minnX;
+      const y14 = Math.floor(Math.random() * (maxxY - minnY + 1)) + minnY;
+
+      const x15 = Math.floor(Math.random() * (maxxX - minnX + 1)) + minnX;
+      const y15 = Math.floor(Math.random() * (maxxY - minnY + 1)) + minnY;
+
+      return { x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6, x7, y7, x8, y8, x9, y9, x10, y10, x11, y11, x12, y12, x13, y13, x14, y14, x15, y15};
+
+    }
+    
+    function gameOver() {
+      snake = [{ x: 10, y: 10 }];
+      direction = 'right';
+      food = generateFood();
+      rock1 = generateRock();
+      rock2 = generateRock()
+      rock3 = generateRock()
+      rock4 = generateRock()
+      rock5 = generateRock()
+      rock6 = generateRock()
+      rock7 = generateRock()
+      rock8 = generateRock()
+      rock9 = generateRock()
+      rock10 = generateRock()
+      rock11 = generateRock()
+      rock12 = generateRock()
+      rock13 = generateRock()
+      rock14 = generateRock()
+      rock15 = generateRock()
+      score = 0;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var score = localStorage.getItem('score');
+    
+    document.getElementById('scoreDisplay').textContent = 'Your Score: ' + score;
+    });
+
+    let changingDirection = false;
+
+    function changeDirection(event) {
+        if (changingDirection) return;
+    
+        changingDirection = true; 
+    
+        switch (event.key) {
+            case 'ArrowUp':
+            case 'w':
+            case 'W':
+                if (direction !== 'down') {
+                    direction = 'up';
+                }
+                break;
+            case 'ArrowDown':
+            case 's':
+            case 'S':
+                if (direction !== 'up') {
+                    direction = 'down';
+                }
+                break;
+            case 'ArrowLeft':
+            case 'a':
+            case 'A':
+                if (direction !== 'right') {
+                    direction = 'left';
+                }
+                break;
+            case 'ArrowRight':
+            case 'd':
+            case 'D':
+                if (direction !== 'left') {
+                    direction = 'right';
+                }
+                break;
+        }
+    
+        setTimeout(() => { changingDirection = false; }, 100);
+    }
+
+    function gameLoop() {
+      move();
+      draw();
+    }
+
+    document.addEventListener('keydown', changeDirection);
+
+    setInterval(gameLoop, 120);
+  }
+
+  </script>
+</body>
+</html>

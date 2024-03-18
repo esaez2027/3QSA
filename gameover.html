@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="gameover.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <title>SPACE SNAKE</title>
+  <link rel="stylesheet" type="text/css" href="gameover.css">
+</head>
+<body>
+    <div class="menu">
+      <h1>GAME OVER</h1>
+      <hr>
+        <p><a href="select.html">RESTART</a></p>
+        <p><a href="index.html">HOME</a></p>
+        <div id="scoreDisplay" style="font-size: 30px; text-align: center;"></div>
+    </div>
+  <script>
+    for (let i = 0; i < 500; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = `${Math.random() * 100}vh`;
+    document.body.appendChild(star);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+    var score = localStorage.getItem('score');
+    if (score === null || score === undefined) {
+        score = 0;
+    }
+    document.getElementById('scoreDisplay').textContent = 'SCORE: ' + score;
+  });
+  </script>
+</body>
+</html>

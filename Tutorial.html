@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: black;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="1" fill="%23fff" /%3E%3C/svg%3E');
+      background-size: 2px 2px;
+      animation: stars 50s infinite linear;
+      z-index: -1; /* Ensure stars are behind other content */
+    }
+
+    h1 {
+        color: rgb(233, 248, 209);
+        font-size: 20px;
+        font-family: "Pixelify Sans", sans-serif;
+    }
+
+    @keyframes stars {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-100vh);
+      }
+    }
+
+    .star {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background-color: #fff;
+      z-index: -1; /* Ensure stars are behind other content */
+    }
+
+    #game-container {
+      position: relative;
+      z-index: 1; /* Ensure game content is on top of the stars */
+    }
+    a{
+      text-decoration: none;
+    }
+
+  </style>
+  <title>About the Developers</title>
+</head>
+<body>
+  <div class="container">
+    <h1>
+        The objective of the game is to control the snake, maneuver it around obstacles (Asteroids), <br>collect space apples to grow in size, and avoid colliding with the walls, obstacles, or the snake's own body.
+<br><br>
+        Game Mechanics:
+<br><br>        
+        1. Starting the Game:<br>
+           - The snake will start with a length of one segment.<br>
+           - Rocks (Asteroids) will be randomly placed on the game board.<br><br>
+        
+        2. Controls:<br>
+           - Use the arrow keys (up, down, left, right) to control the direction of the snake.<br>
+           - The snake will continuously move in the direction it is facing until the player changes its direction.<br><br>
+        
+        3. Snake Movement:<br>
+           - The snake moves one grid square at a time.<br>
+           - If the snake collides with the walls, obstacles (Asteroids), or itself, the game ends.<br><br>
+        
+        4. Collecting Apples:<br>
+           - Space Apples will be randomly placed on the game board.<br>
+           - When the snake eats a Space Apple, it grows in length by one segment.<br>
+           - For each Space Apple eaten, the player earns points.<br><br>
+        
+        5. Obstacles (Asteroids):<br>
+           - Rocks (Asteroids) will be scattered across the game board.<br>
+           - The snake cannot pass through asteroids.<br>
+           - If the snake collides with an asteroid, the game ends.<br><br>
+        
+        6. Game Over:<br>
+           - The game ends when the snake collides with the walls, obstacles (Asteroids), or itself.<br>
+           - A message will be displayed indicating the game is over, along with the player's score.<br>
+           - The player will have the option to play again.
+    </h1>
+    </div>
+    <a href="index.html"><h1 style="font-size: 50px;">RETURN</h1></a>
+  <script>
+      // Generate random stars
+      for (let i = 0; i < 500; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+        document.body.appendChild(star);
+      }
+  </script>
+</body>
+</html>
